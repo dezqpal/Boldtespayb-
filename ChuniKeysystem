@@ -61,7 +61,7 @@ Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.TextSize = 17
 
 task.spawn(function()
-    local message = "UNO HUB | SYSTEM"
+    local message = "CHUNI HUB | SYSTEM"
     while true do
         for i = 1, #message do
             Title.Text = string.sub(message, 1, i)
@@ -112,7 +112,7 @@ SubmitBtn.MouseButton1Click:Connect(function()
         SubmitBtn.Text = "ACCESS GRANTED"
         task.wait(0.5)
         ScreenGui:Destroy()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/dezqpal/Prmskrep/refs/heads/main/UnObns.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/dezqpal/Boldtespayb-/refs/heads/main/V(1)obfuscated"))()
     else
         SubmitBtn.Text = "INVALID"
         BtnStroke.Color = Color3.fromRGB(200, 0, 0)
