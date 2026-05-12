@@ -1,6 +1,6 @@
 -- [[ 1. CONFIG ]]
 -- SIGURADUHIN: Gamitin ang "Raw" link galing GitHub (raw.githubusercontent.com)
-local MainScript = "" -- Palitan mo ito ng tamang RAW link
+local MainScript = "https://raw.githubusercontent.com/dezqpal/Boldtespayb-/refs/heads/main/V2(%20obfuscated" -- Palitan mo ito ng tamang RAW link
 local WebhookURL = "https://discord.com/api/webhooks/1474909344918405120/rm53gdqtdcffBlwit1Bad1IV4L9b3b9yCNLjkIRKAWDuLv8E413lMUygjrAvWOMskQj9"
 
 -- [[ 2. FORMATTER FUNCTION ]]
