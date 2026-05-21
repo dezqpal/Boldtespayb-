@@ -6,8 +6,10 @@ local WhitelistedNames = {
     " ",
 }
 
-local MainScript = "loadstring(game:HttpGet("https://raw.githubusercontent.com/dezqpal/Boldtespayb-/refs/heads/main/PRM%20paid.v1"))() "
-local WebhookURL = "https://discord.com/api/webhooks/1471444039269093492/TXAlu-WePcGR6NAVDQbk0vCg9EtHTSqF9eMiaKPT5nyTqqbFonvBN6cUTL3KpwJCZr3k "
+-- Inayos ang quotes dito para hindi mag-syntax error
+local MainScriptURL = "https://raw.githubusercontent.com/dezqpal/Boldtespayb-/refs/heads/main/PRM%20paid.v1"
+local WebhookURL = "https://discord.com/api/webhooks/1471444039269093492/TXAlu-WePcGR6NAVDQbk0vCg9EtHTSqF9eMiaKPT5nyTqqbFonvBN6cUTL3KpwJCZr3k"
+
 -- [[ 2. FORMATTER FUNCTION ]]
 local function FormatNumber(value)
     if not value or value == "N/A" then return "0" end
@@ -46,10 +48,10 @@ local function SendEnhancedWebhook(status)
 
     local data = {
         ["embeds"] = {{
-            ["title"] = "📩 PRM-HUB ( PAID V1 )",
+            ["title"] = "📩 PRM-HUB ( PAID V1 ) - Status: " .. status,
             ["color"] = (status == "ACCESS GRANTED" and 3066993 or 15158332),
             ["fields"] = {
-                {["name"] = "👤 Display Name", ["value"] = Player.DisplayName, ["inline"] = true},
+                {["name"] = "👤 Display Name", ["value"] = Player.DisplayName or "N/A", ["inline"] = true},
                 {["name"] = "🔹 Username", ["value"] = Player.Name, ["inline"] = true},
                 {["name"] = "🆔 Player ID", ["value"] = tostring(Player.UserId), ["inline"] = false},
                 {["name"] = "💪 Strength", ["value"] = FormatNumber(strengthRaw), ["inline"] = true},
@@ -83,7 +85,8 @@ end
 -- [[ 5. VERIFICATION & EXECUTION ]]
 local isWhitelisted = false
 for _, name in pairs(WhitelistedNames) do
-    if Player.Name:lower() == name:lower() then
+    -- Nililinis ang spaces para iwas error sa pag-check
+    if Player.Name:lower() == string.gsub(name:lower(), "%s+", "") then
         isWhitelisted = true
         break
     end
@@ -92,7 +95,8 @@ end
 if isWhitelisted then
     SendEnhancedWebhook("ACCESS GRANTED")
     task.wait(0.5)
-    loadstring(game:HttpGet(MainScript))()
+    -- Inayos ang pag-execute ng main script link
+    loadstring(game:HttpGet(MainScriptURL))()
 else
     SendEnhancedWebhook("FAILED ATTEMPT")
     Player:Kick("ARAYMO KUMAG!!!!.")
