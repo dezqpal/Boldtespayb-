@@ -68,7 +68,7 @@ if not detectSpoof() then
 end
 
 if not isWhitelisted() then
-    LocalPlayer:Kick("Not whitelisted.")
+    LocalPlayer:Kick("Not whitelisted KUMAG!😂.")
     return
 end
 
