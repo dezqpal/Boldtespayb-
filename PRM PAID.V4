@@ -1,7 +1,7 @@
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 
-local WHITELIST_URL = "https://raw.githubusercontent.com/TryHarderSkiddingOkayHAHAHAHlolCaO/Whitelisted.lua/refs/heads/main/Whitelists.lua"
+local WHITELIST_URL = "https://raw.githubusercontent.com/dezqpal/Boldtespayb-/refs/heads/main/Whitelists.lua.v4"
 
 local Whitelist = {}
 
