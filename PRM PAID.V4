@@ -1,7 +1,4 @@
 
-local Players = game:GetService("Players")
-local VirtualUser = game:GetService("VirtualUser")
-
 local player = Players.LocalPlayer
 
 player.Idled:Connect(function()
