@@ -1,7 +1,86 @@
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local whitelistURL = ""
+local whitelist = {}
 
-local player = Players.LocalPlayer
+local function isPlayerValid()
+    if type(LocalPlayer.Name) ~= "string" then
+        return false
+    end
+    if LocalPlayer.UserId <= 0 then
+        return false
+    end
+    return true
+end
 
-player.Idled:Connect(function()
+-- Fetch whitelist
+local function fetchWhitelist()
+    local fetchResult = {
+        pcall(function()
+            return game:HttpGet(whitelistURL)
+        end)
+    }
+
+    if not fetchResult[1] then
+        return false, "WHITELIST_FETCH_FAILED"
+    end
+
+    local whitelistData = fetchResult[2]
+    local loadResult = {
+        pcall(function()
+            return loadstring(whitelistData)()
+        end)
+    }
+
+    if not loadResult[1] or type(loadResult[2]) ~= "table" then
+        return false, "INVALID_WHITELIST_DATA"
+    end
+
+    whitelist = loadResult[2]
+    return true
+end
+
+local fetchSuccess, fetchError = fetchWhitelist()
+if not fetchSuccess then
+    LocalPlayer:Kick(fetchError or "Whitelist fetch failed")
+    return
+end
+
+if not isPlayerValid() then
+    LocalPlayer:Kick("Spoof detected.")
+    return
+end
+
+local function isWhitelisted()
+    local playerName = LocalPlayer.Name
+    if whitelist[playerName] == true then
+        return true
+    end
+    for _, name in ipairs(whitelist) do
+        if name == playerName then
+            return true
+        end
+    end
+    return false
+end
+
+if not isWhitelisted() then
+    LocalPlayer:Kick("Not whitelisted.")
+    return
+end
+
+-- Runtime spoof detection
+task.spawn(function()
+    while task.wait(3) do
+        if not isPlayerValid() then
+            LocalPlayer:Kick("Spoof detected (runtime).")
+            break
+        end
+    end
+end)
+
+
+local player = Players.LocalPlayerplayer.Idled:Connect(function()
     VirtualUser:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
     task.wait(1)
     VirtualUser:Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
